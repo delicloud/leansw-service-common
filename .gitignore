@@ -1,0 +1,16 @@
+target
+.idea
+src/main/resources/public/**
+src/main/docker/lib
+*.iml
+.DS_Store
+web.pid
+**/logs
+**/reports
+data/**
+.gradle
+cd-metrics.ipr
+cd-metrics.iml
+cd-metrics.iws
+out
+build

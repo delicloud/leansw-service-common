@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+</head>
+<body><h1>Lean Error 4xx Page</h1>
+<div th:text="|app: ${@environment.getProperty('spring.application.name')}|"></div>
+<div th:text="|hostname: ${@environment.getProperty('spring.cloud.client.hostname')}|"></div>
+<div th:text="|timestamp: ${timestamp}|"></div>
+<div th:text="|traceId: ${traceId}|"></div>
+<div th:text="|spanId: ${spanId}|"></div>
+<div th:text="|error: ${error}|"></div>
+<div th:text="|status: ${status}|"></div>
+<div th:text="|path: ${path}|"></div>
+<div th:text="|message: ${message}|"></div>
+<div th:text="|exception: ${exception}|"></div>
+<div th:if="${!#strings.isEmpty(trace)}">
+    trace:
+    <div th:each="line : ${#strings.listSplit(trace,T(System).getProperty('line.separator'))}">
+        <span th:text="${line}"></span>
+    </div>
+</div>
+</body>
+</html>

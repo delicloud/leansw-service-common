@@ -4,16 +4,24 @@
       layout:decorate="layout">
 <head>
 </head>
-<body><h1>Lean Error 5xx Page</h1>
+<body><h1>Lean Error 4xx Page</h1>
 <div th:text="|app: ${@environment.getProperty('spring.application.name')}|"></div>
 <div th:text="|hostname: ${@environment.getProperty('spring.cloud.client.hostname')}|"></div>
 <div th:text="|timestamp: ${timestamp}|"></div>
 <div th:text="|traceId: ${traceId}|"></div>
+<div th:text="|spanId: ${spanId}|"></div>
 <div th:text="|error: ${error}|"></div>
+
 <div th:text="|status: ${status}|"></div>
 <div th:text="|path: ${path}|"></div>
 <div th:text="|message: ${message}|"></div>
 <div th:text="|exception: ${exception}|"></div>
+<div th:if="${!#lists.isEmpty(errors)}">
+    errors:
+    <div th:each="item : ${errors}">
+        <span th:text="${item}"></span>
+    </div>
+</div>
 <div th:if="${!#strings.isEmpty(trace)}">
     trace:
     <div th:each="line : ${#strings.listSplit(trace,T(System).getProperty('line.separator'))}">
